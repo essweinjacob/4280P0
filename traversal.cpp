@@ -5,6 +5,7 @@
 #include "node.h"
 using namespace std;
 
+// Prints BST in Inorder
 void printInorder(Node *root, int level, ofstream &traversalFile){
     level++;
     if(root != NULL){
@@ -19,6 +20,7 @@ void printInorder(Node *root, int level, ofstream &traversalFile){
     }
 }
 
+// Prints BST in Postorder
 void printPostorder(Node *root, int level, ofstream &traversalFile){
     level++;
     if(root != NULL){
@@ -33,6 +35,7 @@ void printPostorder(Node *root, int level, ofstream &traversalFile){
     }
 }
 
+// Prints BST in preorder
 void printPreorder(Node *root, int level, ofstream &traversalFile){
     level++;
     if(root != NULL){

@@ -4,8 +4,10 @@
 #include "tree.h"
 using namespace std;
 
+// This function will build a tree
 Node *buildTree(string fileName){
-    Node *root = NULL;
+    Node *root = NULL;  // Create a base root node
+    // Open given file
     fstream inputFile;
     inputFile.open(fileName);
     // Check if file exists
@@ -13,11 +15,13 @@ Node *buildTree(string fileName){
         //cout << "File " << fileName << " exists" << endl;
         // Read through file
         string word;
+        // While words in file, input words into tree/nodes
         while(inputFile >> word){
             //cout << word << endl;
             root = insertWord(word, root);
         }
     }
+    // If the file exists return NULL
     else{
         cout << "File does not exists" << endl;
         return NULL;
@@ -26,6 +30,7 @@ Node *buildTree(string fileName){
     return root;
 }
 
+// This function inputs words into nodes or creates nodes if a node doesnt already exist for the first letter of the word
 Node *insertWord(string word, Node *node){
     // If no nodes in the in the tree yet
     if(node == NULL){
@@ -59,7 +64,9 @@ Node *insertWord(string word, Node *node){
     return node;
 }
 
+// This function creates new nodes as needed
 Node *createNode(string word){
+    // Assigns values
     struct Node *temp = (Node*)malloc(sizeof(Node));
     temp->letter = word[0];
     temp->asiccValue = (int)word[0];
