@@ -33,10 +33,7 @@ int main(int argc, char *argv[]){
         cout << endl << "Finished inputing strings/words" << endl;
 
         tempFile.close();
-	cout << "1\n";
         root = buildTree(fileName);
-	cout << "2\n";
-
     }
     else{
         cerr << "You gave more then one command line argument. PROGRAM FAILED" << endl;
@@ -45,7 +42,6 @@ int main(int argc, char *argv[]){
 
     ofstream traversalFile;
     int level = -1;
-
 
     string inorderFile = fileName + ".inorder";
     traversalFile.open(inorderFile.c_str());

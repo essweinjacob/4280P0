@@ -42,6 +42,9 @@ Node *insertWord(string word, Node *node){
     else if(node->asiccValue == (int)word[0]){
         bool wordExistFlag = false;
         //  See if word already exists in the node
+        if(node->words.count(word) != 0){
+	    wordExistFlag = true;
+	}
         /*
         for(int i = 0; i < node->wordCount; i++){
             if(word == node->words[i]){
@@ -49,14 +52,11 @@ Node *insertWord(string word, Node *node){
             }
         }
 	*/
-	if(node->words.count(word) != 0){
-	    wordExistFlag = true;
-	}
+	
         // If word already exists dont input word
         if(!wordExistFlag){
 	    node->wordCount++;
-            //node->words[node->wordCount] = word;
-	    node->words.insert(word);
+            node->words.insert(word);
         }
         return node;
     }
@@ -75,14 +75,12 @@ Node *insertWord(string word, Node *node){
 // This function creates new nodes as needed
 Node *createNode(string word){
     // Assigns values
-    struct Node *temp = (Node*)malloc(sizeof(Node));
+    struct Node *temp = new Node;
     temp->letter = word[0];
     temp->asiccValue = (int)word[0];
     temp->left = NULL;
     temp->right = NULL;
-    cout << "here\n";
     temp->words.insert(word);
-    cout << "1\n";
-    temp->wordCount++;
+    temp->wordCount = 1;
     return temp;
 }

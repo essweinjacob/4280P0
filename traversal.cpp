@@ -14,16 +14,15 @@ void printInorder(Node *root, int level, ofstream &traversalFile){
         traversalFile << string(2*level, ' ') << root->letter << ": ";
         //cout << root->letter << ": ";
         
-	/*
-        for(int i = 0; i < root->wordCount; i++){
+/*
+        for(int i = 0; i < root->words.size(); i++){
             traversalFile << root->words[i] << " ";
         }
-	*/
+*/
 	set<string>::iterator iter;
-	for(iter = root->words.begin(); iter!= root->words.end(); iter++){
+	for(iter = root->words.begin(); iter != root->words.end(); iter++){
 	    traversalFile << *iter << " ";
 	}
-
         traversalFile << endl;
         printInorder(root->right, level, traversalFile);
     }
@@ -38,12 +37,12 @@ void printPostorder(Node *root, int level, ofstream &traversalFile){
         traversalFile << string(2*level, ' ') << root->letter << ": ";
         //cout << root->letter << ": ";
         /*
-        for(int i = 0; i < root->wordCount; i++){
+        for(int i = 0; i < root->words.size(); i++){
             traversalFile << root->words[i] << " ";
         }
-	*/
-        set<string>::iterator iter;
-        for(iter = root->words.begin(); iter!= root->words.end(); iter++){
+*/
+	set<string>::iterator iter;
+        for(iter = root->words.begin(); iter != root->words.end(); iter++){
             traversalFile << *iter << " ";
         }
         traversalFile << endl;
@@ -58,12 +57,12 @@ void printPreorder(Node *root, int level, ofstream &traversalFile){
         traversalFile << string(2*level, ' ') << root->letter << ": ";
         //cout << root->letter << ": ";
         /*
-        for(int i = 0; i < root->wordCount; i++){
+        for(int i = 0; i < root->words.size(); i++){
             traversalFile << root->words[i] << " ";
         }
-	*/
+*/
 	set<string>::iterator iter;
-        for(iter = root->words.begin(); iter!= root->words.end(); iter++){
+        for(iter = root->words.begin(); iter != root->words.end(); iter++){
             traversalFile << *iter << " ";
         }
         traversalFile << endl;
