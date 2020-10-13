@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <set>
 #include <fstream>
 #include "tree.h"
 using namespace std;
@@ -18,7 +19,7 @@ Node *buildTree(string fileName){
         string word;
         // While words in file, input words into tree/nodes
         while(inputFile >> word){
-            //cout << word << endl;
+            cout << word << endl;
             root = insertWord(word, root);
         }
     }
@@ -41,15 +42,21 @@ Node *insertWord(string word, Node *node){
     else if(node->asiccValue == (int)word[0]){
         bool wordExistFlag = false;
         //  See if word already exists in the node
+        /*
         for(int i = 0; i < node->wordCount; i++){
             if(word == node->words[i]){
                 wordExistFlag = true;
             }
         }
+	*/
+	if(node->words.count(word) != 0){
+	    wordExistFlag = true;
+	}
         // If word already exists dont input word
         if(!wordExistFlag){
-            node->words[node->wordCount] = word;
-            node->wordCount++;
+	    node->wordCount++;
+            //node->words[node->wordCount] = word;
+	    node->words.insert(word);
         }
         return node;
     }
@@ -69,13 +76,13 @@ Node *insertWord(string word, Node *node){
 Node *createNode(string word){
     // Assigns values
     struct Node *temp = (Node*)malloc(sizeof(Node));
-	cout << "1\n";
     temp->letter = word[0];
-cout << "2\n";
     temp->asiccValue = (int)word[0];
-cout << "3\n";
-    temp->words[temp->wordCount] = word;
-cout << "4\n";
+    temp->left = NULL;
+    temp->right = NULL;
+    cout << "here\n";
+    temp->words.insert(word);
+    cout << "1\n";
     temp->wordCount++;
     return temp;
 }
