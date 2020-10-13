@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include <string>
 #include <fstream>
 #include "tree.h"
@@ -9,7 +10,7 @@ Node *buildTree(string fileName){
     Node *root = NULL;  // Create a base root node
     // Open given file
     fstream inputFile;
-    inputFile.open(fileName);
+    inputFile.open(fileName.c_str());
     // Check if file exists
     if(inputFile){
         //cout << "File " << fileName << " exists" << endl;
@@ -68,9 +69,13 @@ Node *insertWord(string word, Node *node){
 Node *createNode(string word){
     // Assigns values
     struct Node *temp = (Node*)malloc(sizeof(Node));
+	cout << "1\n";
     temp->letter = word[0];
+cout << "2\n";
     temp->asiccValue = (int)word[0];
+cout << "3\n";
     temp->words[temp->wordCount] = word;
+cout << "4\n";
     temp->wordCount++;
     return temp;
 }

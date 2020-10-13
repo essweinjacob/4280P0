@@ -15,7 +15,7 @@ int main(int argc, char *argv[]){
         root = buildTree(fileName);
         if(root == NULL){
             cerr << "No binary search tree given. PROGRAM FAILED" << endl;
-            return EXIT_FAILURE;
+            return 0;
         }
     }
     else if(argc == 1){
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
         fileName = "out";
         ofstream tempFile;
         string userInput;
-        tempFile.open(fileName);
+        tempFile.open(fileName.c_str());
         
         cout << "Enter strings and close file when done: " << endl;
         while(getline(cin, userInput)){
@@ -33,25 +33,32 @@ int main(int argc, char *argv[]){
         cout << endl << "Finished inputing strings/words" << endl;
 
         tempFile.close();
+	cout << "1\n";
         root = buildTree(fileName);
+	cout << "2\n";
 
     }
     else{
         cerr << "You gave more then one command line argument. PROGRAM FAILED" << endl;
+	return 0;
     }
 
     ofstream traversalFile;
     int level = -1;
- 
-    traversalFile.open(fileName + ".inorder");
+
+
+    string inorderFile = fileName + ".inorder";
+    traversalFile.open(inorderFile.c_str());
     printInorder(root, level, traversalFile);
     traversalFile.close();
 
-    traversalFile.open(fileName + ".preorder");
+    string preorderFile = fileName + ".preorder";
+    traversalFile.open(preorderFile.c_str());
     printPreorder(root, level, traversalFile);
     traversalFile.close();
 
-    traversalFile.open(fileName + ".postorder");
+    string postorderFile = fileName + ".postorder";
+    traversalFile.open(postorderFile.c_str());
     printPostorder(root, level, traversalFile);
     traversalFile.close();
 
